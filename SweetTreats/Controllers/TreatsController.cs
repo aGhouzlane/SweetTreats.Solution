@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using SweetTreats.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SweetTreats.Controllers
 {
+  [Authorize]
   public class TreatsController : Controller
   {
     private readonly SweetTreatsContext _db;

@@ -4,10 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using SweetTreats.Models;
 using System.Collections.Generic;
 using System.Linq;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace SweetTreats.Controllers
 {
+  [Authorize]
   public class FlavorsController : Controller
   {
     private readonly SweetTreatsContext _db;
@@ -21,7 +22,7 @@ namespace SweetTreats.Controllers
       List<Flavor> model = _db.Flavors.ToList();
       return View(model);
     }
-
+    
     public ActionResult Create()
     {
       ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
