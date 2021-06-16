@@ -1,0 +1,25 @@
+@model SweetTreats.Models.Treat
+
+<h2>Treat Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)<h3>
+    <div>
+      @if (@Model.JoinEntities.Count == 0)
+      {
+        <p>This Treat is not associated to any Flavors</p>
+      }
+      else
+      {
+        <h4>This Treat is associated to the following Flavor(s):</h4>
+        <ul>
+          @foreach (var join in Model.JoinEntities)
+          {
+            <li>@join.Flavor.Name</li>
+          }
+        </ul>
+      }
+    </div>
+
+    <p>@Html.ActionLink("Edit Treat", "Edit", new { id = Model.TreatId })</p>
+    <p>@Html.ActionLink("Delete Treat", "Delete", new { id = Model.TreatId })</p>
+    <p>@Html.ActionLink("Back to list", "Index")</p>
